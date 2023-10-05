@@ -1,0 +1,64 @@
+.titledc {
+  margin-top: 180px;
+  background-color: #142f93dc;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'AVENIR NEXT HEAVY';
+}
+
+table {
+  margin: 0 auto;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  border-collapse: collapse;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+}
+
+table, th, td {
+  border: 2px solid #fff;
+}
+
+th, td {
+  margin: 10px;
+  padding: 10px;
+}
+
+thead {
+  background-color: #142f93dc;
+  color: azure;
+  font-family: 'Agenor Neue Regular';
+}
+
+tbody {
+  background-color: #D9D9D9;
+  color: rgb(0, 0, 0);
+  max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto; /* Agrega el scroll vertical solo para el cuerpo de la tabla */
+}
+
+.btnV {
+  width: 50px;
+  height: 50px;
+  margin-top: 4px;
+  margin-left: 45px;
+}
+
+.atras {
+  width: 40px;
+  height: 40px;
+  padding-left: 110px;
+  margin-top: 45px;
+  margin-bottom: 90px;
+  top: 0;
+  right: 0;
+}
+
+.act {
+  background-color: rgb(193, 69, 69);
+}
+
+

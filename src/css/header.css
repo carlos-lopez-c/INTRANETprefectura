@@ -1,0 +1,69 @@
+/* Estilos para pantallas grandes */
+header {
+    width: 150%;
+    height: 150px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+}
+
+.LogoConsejo img {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 200%;
+    padding: auto;
+    height: 400px; /* Esto es opcional, ajusta la altura según tu diseño */
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (max-width: 1024px) {
+    header {
+        width: 90%; /* Reducir el ancho para pantallas medianas */
+    }
+
+    .LogoConsejo img {
+        margin: 70%; /* Ajustar el margen para pantallas medianas */
+        height: 400px; /* Ajustar la altura para pantallas medianas */
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    header {
+        width: 150%; /* Ancho completo para pantallas pequeñas */
+        height: 200px;        
+    }
+
+    .LogoConsejo img {
+        margin: 100%; /* Ajustar el margen para pantallas pequeñas */
+        height: 400px; /* Ajustar la altura para pantallas pequeñas */
+    }
+}
+
+@media screen and (max-width: 368px) {
+    header {
+        width: 100%; /* Ancho completo para pantallas pequeñas */
+        height: 95px;        
+    }
+
+    .LogoConsejo img {
+        margin: 5%; /* Ajustar el margen para pantallas pequeñas */
+        height: 250px; /* Ajustar la altura para pantallas pequeñas */
+    }
+}
+
+@media screen and (max-width: 360px) {
+    header {
+        width: 100%; /* Ancho completo para pantallas pequeñas */
+        height: 95px;        
+    }
+
+    .LogoConsejo img {
+        margin: 80%; /* Ajustar el margen para pantallas pequeñas */
+        height: 250px; /* Ajustar la altura para pantallas pequeñas */
+    }
+}

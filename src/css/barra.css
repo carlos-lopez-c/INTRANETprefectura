@@ -1,0 +1,70 @@
+/* Estilos para la barra de colores en pantallas grandes */
+.box {
+    position: fixed;
+    top: 150px;
+    left: 0;
+    display: flex;
+    width: 100%;
+    z-index: 200;
+}
+
+.box-sm {
+    height: 5px;
+    margin: 0;
+    flex-grow: 2;
+    transition: none; /* Eliminar la transición */
+}
+
+/* Establecer colores fijos para la barra de colores */
+.red {
+    background-color: #FF5852;
+}
+
+.orange {
+    background-color: #FF9000;
+}
+
+.yellow {
+    background-color: #FFD300;
+}
+
+.green {
+    background-color: #3DCD49;
+}
+
+.blue {
+    background-color: #0089D7;
+}
+
+.purple {
+    background-color: #9E44C4;
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .box {
+        top: 150px; /* Ajustar la posición en pantallas medianas */
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .box {
+        top: 200px; /* Ajustar la posición en pantallas pequeñas */
+    }
+
+    .box-sm {
+        height: 3px; /* Ajustar la altura en pantallas pequeñas */
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 360px) {
+    .box {
+        top: 95px; /* Ajustar la posición en pantallas pequeñas */
+    }
+
+    .box-sm {
+        height: 3px; /* Ajustar la altura en pantallas pequeñas */
+    }
+}

@@ -1,0 +1,60 @@
+.container {
+    width: 100%;    
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 95px;
+    
+}
+.card-title{
+    font-family: 'avenir-next-heavy';
+}
+.container .swiper-container {
+    width: 100%;
+}
+
+.container .swiper-slide {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    background: #ffffff62;
+    border: 2px solid #0c101669;
+    border-radius: 15px;
+    text-align: start;
+    height: 400px; /* Establece una altura fija para todas las tarjetas */
+    overflow: hidden; /* Oculta el contenido que supere la altura fija */
+    display: flex;
+    flex-direction: column;
+}
+
+.container .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.container .swiper-slide .card-description {
+    padding: 1rem 1rem;
+    flex-grow: 1;
+    overflow: hidden; /* Oculta el contenido que supere la altura fija */
+}
+.container .swiper-slide .card-link {
+    display: flex;
+    padding-top: 8vh;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente el contenido */
+    justify-content: flex-end; /* Coloca el contenido en la parte inferior */
+    margin-top: auto; /* Empuja el contenido hacia abajo */
+}
+
+.container .swiper-slide .card-link a {
+    text-decoration: none;
+    color: #1d6ce2;
+    font-family: 'Agenor Neue Regular';
+}
