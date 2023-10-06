@@ -1,22 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/Tipodc.css'; // Importa el archivo CSS
 import Icon from '../iconos/flecha-hacia-atras.png'
 import Resgistrar from '../iconos/registrar.png'
 import { useNavigate } from 'react-router-dom';
-import { getVehiculos } from '../services/vehiculo.service';
+import { useDispatch, useSelector } from 'react-redux';
+import { startGetVehiculo, startGetVehiculos } from '../store/vehiculo/thunks';
 
 export function Vehiculos() {
   const navigate = useNavigate();
-  const [combustibles, setCombustibles] = useState(['DIESEL', 'EXTRA']);
-  const [vehiculos, setVehiculos] = useState([]); // Cambié el nombre de la variable para evitar confusiones
-  const [tiposDeCombustible, setTiposDeCombustible] = useState(['Tipocom']); // Cambié el nombre de la variable
+  const dispatch = useDispatch();
+  const { vehiculos, loading, vehiculo } = useSelector(state => state.vehiculo);
+  const [vehiculosFiltrados, setVehiculosFiltrados] = useState(vehiculos); // Agregué esta línea
+  const [searchVehiculo, setSearchVehiculo] = useState('');
+
+
   useEffect(() => {
-  getVehiculos().then((data)=>{    
-  setVehiculos(data.contenido)
-  })
+    dispatch(startGetVehiculos());
   }, [])
 
+  useEffect(() => {
+    if (vehiculo.placa) {
+      setVehiculosFiltrados(vehiculos.filter(v => v.placa === vehiculo.placa));
+    } else {
+      setVehiculosFiltrados(vehiculos);
+    }
+  }, [vehiculo, vehiculos])
 
+
+  const handleSearchChange = (e) => {
+    setSearchVehiculo(e.target.value);
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchVehiculo === '') return setVehiculosFiltrados(vehiculos);
+    dispatch(startGetVehiculo(searchVehiculo));
+  }
+
+
+  if (loading) return (<h1>Cargando...</h1>);
   return (
     <div> {/* Aplica una clase de contenedor */}
 
@@ -33,8 +55,11 @@ export function Vehiculos() {
 
       <div className="box"> {/* Cambié "class" a "className" */}
         <div className="container-2"> {/* Cambié "class" a "className" */}
-          <span className="icon"><i className="fa fa-search"></i></span>
-          <input type="search" id="search" placeholder="Buscar..." />
+          <form onSubmit={handleSearch}>
+            <span className="icon"><i className="fa fa-search"></i></span>
+            <input type="search" id="search" placeholder="Buscar..."
+              value={searchVehiculo} onChange={handleSearchChange} />
+          </form>
           <img src={Resgistrar} alt="ICONO REGISTRAR" onClick={() => { navigate("/combustible") }} className="btnV" />
         </div>
       </div>
@@ -51,21 +76,20 @@ export function Vehiculos() {
             <th className='act'>ACCIONES</th>
           </tr>
         </thead>
-
         <tbody>
-          {vehiculos.map((vehiculo, index) => (
+          {vehiculosFiltrados.map((vehiculo) => (
             <tr key={vehiculo.placa}>
               <td>{vehiculo.placa}</td>
-              <td>{vehiculo.nombreDelVehiculo}</td> {/* Usar vehiculos[index] para obtener el vehículo correspondiente */}
-              <td>{vehiculo.tipoDeVehiculo}</td> {/* Usar tiposDeCombustible[index] */}
+              <td>{vehiculo.nombreDelVehiculo}</td>
+              <td>{vehiculo.tipoDeVehiculo}</td>
               <td>{vehiculo.conductor}</td>
               <td>{vehiculo.kilometraje}</td>
               <td>{vehiculo.tipoCombustible}</td>
               <td></td>
             </tr>
           ))}
-        </tbody>       
-       
+        </tbody>
+
 
       </table>
     </div>
