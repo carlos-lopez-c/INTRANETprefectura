@@ -3,20 +3,21 @@ import '../css/Tipodc.css'; // Importa el archivo CSS
 import '../css/buscador.css'
 import Icon from '../iconos/flecha-hacia-atras.png'
 import Resgistrar from '../iconos/registrar.png'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { startDeleteVehiculo, startGetVehiculo, startGetVehiculos } from '../store/vehiculo/thunks';
+import { Pagination } from '../components/Pagination';
 
 export function Vehiculos() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { vehiculos, loading, vehiculo } = useSelector(state => state.vehiculo);
+  const { vehiculos, loading, vehiculo, ultimaPagina, totalPaginas, medidaDePagina, numeroDePagina, totalElementos } = useSelector(state => state.vehiculo);
   const [vehiculosFiltrados, setVehiculosFiltrados] = useState(vehiculos); // Agregué esta línea
   const [searchVehiculo, setSearchVehiculo] = useState('');
 
 
   useEffect(() => {
-    dispatch(startGetVehiculos());
+    dispatch(startGetVehiculos(numeroDePagina, medidaDePagina));
   }, [])
 
   useEffect(() => {
@@ -38,10 +39,21 @@ export function Vehiculos() {
     dispatch(startGetVehiculo(searchVehiculo));
   }
 
-  const handleDelete=(placa)=>{
+  const handleDelete = (placa) => {
     dispatch(startDeleteVehiculo(placa));
   }
 
+  const handlePaginaSiguiente = () => {
+    dispatch(startGetVehiculos(numeroDePagina + 1, medidaDePagina));
+  }
+
+  const handlePaginaAnterior = () => {
+    dispatch(startGetVehiculos(numeroDePagina - 1, medidaDePagina));
+  }
+
+  const handleMedidaDePagina = (medida) => {
+    dispatch(startGetVehiculos(1, medida));
+  }
   if (loading) return (<h1>Cargando...</h1>);
   return (
     <div> {/* Aplica una clase de contenedor */}
@@ -50,7 +62,7 @@ export function Vehiculos() {
         <h1 >LISTA DE VEHICULOS Y PLACAS</h1>
       </div>
 
-     
+
 
 
       <link href={'//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'} rel="stylesheet" />
@@ -84,20 +96,29 @@ export function Vehiculos() {
             <tr key={vehiculo.placa}>
               <td>{vehiculo.placa}</td>
               <td>{vehiculo.nombreDelVehiculo}</td>
-              <td>{vehiculo.tipoDeVehiculo}</td> 
+              <td>{vehiculo.tipoDeVehiculo}</td>
               <td>{vehiculo.tipoCombustible}</td>
               <td>{vehiculo.conductor}</td>
               <td>{vehiculo.kilometraje}</td>
               <td>
-                <button onClick={()=>handleDelete(vehiculo.placa)}>Eliminar</button>
-                <button>Actualizar</button>
+                <button onClick={() => handleDelete(vehiculo.placa)}>Eliminar</button>
+                <Link to={`/vehiculos/formulario/${vehiculo.placa}`} >Actualizar</Link>
               </td>
             </tr>
           ))}
         </tbody>
-
-
       </table>
+      <Pagination
+        ultimaPagina={ultimaPagina}
+        totalPaginas={totalPaginas}
+        medidaDePagina={medidaDePagina}
+        numeroDePagina={numeroDePagina}
+        totalElementos={totalElementos}
+        handlePaginaSiguiente={handlePaginaSiguiente}
+        handlePaginaAnterior={handlePaginaAnterior}
+        handleMedidaDePagina={handleMedidaDePagina}
+
+      />
     </div>
   );
 }

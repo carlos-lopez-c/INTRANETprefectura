@@ -6,8 +6,9 @@ vehiculoService.createVehiculo = async (vehiculo) => {
     return data
 }
 
-vehiculoService.getVehiculos = async () => {
-    const { data } = await api.get("vehiculos");
+vehiculoService.getVehiculos = async (numeroDePagina, medidaDePagina) => {
+    const { data } = await api.get(`vehiculos?pageNumber=${numeroDePagina - 1}&pageSize=${medidaDePagina}`);
+    console.log(data);
     return data
 }
 

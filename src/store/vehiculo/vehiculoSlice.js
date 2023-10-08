@@ -5,12 +5,22 @@ export const vehiculoSlice = createSlice({
     initialState: {
         vehiculos: [],
         vehiculo: {},
+        medidaDePagina: 5,
+        numeroDePagina: 1,
+        totalElementos: 0,
+        totalPaginas: 0,
+        ultimaPagina: true,
         loading: false,
         error: null,
     },
     reducers: {
         getVehiculos: (state, action) => {
-            state.vehiculos = action.payload;
+            state.vehiculos = action.payload.vehiculos;
+            state.medidaDePagina = action.payload.options.medidaDePagina;
+            state.numeroDePagina = action.payload.options.numeroDePagina;
+            state.totalElementos = action.payload.options.totalElementos;
+            state.totalPaginas = action.payload.options.totalPaginas;
+            state.ultimaPagina = action.payload.options.ultimaPagina;
         },
         getVehiculo: (state, action) => {
             state.vehiculo = action.payload;
@@ -35,6 +45,9 @@ export const vehiculoSlice = createSlice({
         setError: (state, action) => {
             state.error = action.payload;
         },
+        cleanVehiculo: (state) => {
+            state.vehiculo = {};
+        },
     },
 });
 
@@ -44,6 +57,7 @@ export const {
     createVehiculo,
     updateVehiculo,
     deleteVehiculo,
+    cleanVehiculo,
     setLoading,
     setError,
 } = vehiculoSlice.actions;

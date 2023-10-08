@@ -1,11 +1,21 @@
-import { getVehiculo, getVehiculos, createVehiculo, updateVehiculo, setLoading, setError, deleteVehiculo } from "./vehiculoSlice";
+import { getVehiculo, getVehiculos, createVehiculo, updateVehiculo, setLoading, setError, deleteVehiculo, cleanVehiculo } from "./vehiculoSlice";
 import vehiculoService from "../../services/vehiculo.service";
 
-export const startGetVehiculos = () => async (dispatch) => {
+export const startGetVehiculos = (numeroDePagina, medidaDePagina) => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-        const { contenido } = await vehiculoService.getVehiculos();
-        dispatch(getVehiculos(contenido));
+        console.log(numeroDePagina, medidaDePagina);
+        const data = await vehiculoService.getVehiculos(numeroDePagina, medidaDePagina);
+        dispatch(getVehiculos({
+            vehiculos: data.contenido,
+            options: {
+                medidaDePagina: data.medidaDePagina,
+                numeroDePagina: data.numeroDePagina + 1,
+                totalElementos: data.totalElements,
+                totalPaginas: data.totalPaginas,
+                ultimaPagina: data.ultimaPagina,
+            }
+        }));
     } catch (error) {
         dispatch(setError(error));
     } finally {
@@ -43,6 +53,7 @@ export const startUpdateVehiculo = (placa, vehiculo) => async (dispatch) => {
     try {
         const data = await vehiculoService.updateVehiculo(placa, vehiculo);
         dispatch(updateVehiculo(data));
+        dispatch(cleanVehiculo());
     } catch (error) {
         dispatch(setError(error));
     } finally {
@@ -55,6 +66,7 @@ export const startDeleteVehiculo = (placa) => async (dispatch) => {
     try {
         await vehiculoService.deleteVehiculo(placa);
         dispatch(deleteVehiculo(placa));
+        dispatch(cleanVehiculo());
     } catch (error) {
         dispatch(setError(error));
     } finally {

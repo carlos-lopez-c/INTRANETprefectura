@@ -1,10 +1,9 @@
-import React from 'react'; 
 import AppRoutes from './routes/Approutes'
 
-function App() {  
+function App() {
   return (
     <div className="App">
-      <AppRoutes />      
+      <AppRoutes />
     </div>
   );
 }
