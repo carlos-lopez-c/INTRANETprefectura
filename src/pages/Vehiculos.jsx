@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import '../css/Tipodc.css'; // Importa el archivo CSS
+import '../css/buscador.css'
 import Icon from '../iconos/flecha-hacia-atras.png'
 import Resgistrar from '../iconos/registrar.png'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { startGetVehiculo, startGetVehiculos } from '../store/vehiculo/thunks';
+import { startDeleteVehiculo, startGetVehiculo, startGetVehiculos } from '../store/vehiculo/thunks';
 
 export function Vehiculos() {
   const navigate = useNavigate();
@@ -37,6 +38,9 @@ export function Vehiculos() {
     dispatch(startGetVehiculo(searchVehiculo));
   }
 
+  const handleDelete=(placa)=>{
+    dispatch(startDeleteVehiculo(placa));
+  }
 
   if (loading) return (<h1>Cargando...</h1>);
   return (
@@ -46,21 +50,20 @@ export function Vehiculos() {
         <h1 >LISTA DE VEHICULOS Y PLACAS</h1>
       </div>
 
-      <div className="atras"> {/* Cambié "class" a "className" */}
-        <img src={Icon} alt="TITULO DE LA SECCION" onClick={() => { navigate("/combustible") }} className="atras" />
-      </div>
+     
 
 
       <link href={'//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'} rel="stylesheet" />
 
-      <div className="box"> {/* Cambié "class" a "className" */}
+      <div className="atras"> {/* Cambié "class" a "className" */}
         <div className="container-2"> {/* Cambié "class" a "className" */}
           <form onSubmit={handleSearch}>
             <span className="icon"><i className="fa fa-search"></i></span>
             <input type="search" id="search" placeholder="Buscar..."
               value={searchVehiculo} onChange={handleSearchChange} />
           </form>
-          <img src={Resgistrar} alt="ICONO REGISTRAR" onClick={() => { navigate("/combustible") }} className="btnV" />
+          <img src={Icon} alt="TITULO DE LA SECCION" onClick={() => { navigate("/combustible") }} className='imgA' />
+          <img src={Resgistrar} alt="ICONO REGISTRAR" onClick={() => { navigate("/vehiculos/formulario") }} className="btnV" />
         </div>
       </div>
 
@@ -81,11 +84,14 @@ export function Vehiculos() {
             <tr key={vehiculo.placa}>
               <td>{vehiculo.placa}</td>
               <td>{vehiculo.nombreDelVehiculo}</td>
-              <td>{vehiculo.tipoDeVehiculo}</td>
+              <td>{vehiculo.tipoDeVehiculo}</td> 
+              <td>{vehiculo.tipoCombustible}</td>
               <td>{vehiculo.conductor}</td>
               <td>{vehiculo.kilometraje}</td>
-              <td>{vehiculo.tipoCombustible}</td>
-              <td></td>
+              <td>
+                <button onClick={()=>handleDelete(vehiculo.placa)}>Eliminar</button>
+                <button>Actualizar</button>
+              </td>
             </tr>
           ))}
         </tbody>

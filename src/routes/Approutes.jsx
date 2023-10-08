@@ -6,6 +6,8 @@ import Combustible from '../pages/Combustible'
 import { Bcolores } from '../components/Bcolores';
 import {TipoDoc} from '../pages/TipoDoc'
 import { Vehiculos } from '../pages/vehiculos';
+import { IngresarV } from '../pages/ingresarV';
+
 
 export default function AppRoutes() {
     return (
@@ -17,6 +19,7 @@ export default function AppRoutes() {
                 <Route path={"/combustible"} element={<Combustible />} />
                 <Route path={"/tipodc"} element={<TipoDoc />} />
                 <Route path={"/vehiculos"} element={<Vehiculos />} />
+                <Route path={"/vehiculos/formulario"} element={<IngresarV />} />
             </Routes>
         </>
 
