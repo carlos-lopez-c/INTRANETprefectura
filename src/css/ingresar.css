@@ -1,0 +1,76 @@
+  .ingreso{
+    margin-bottom: 40px;
+  }
+  
+/* Estilo para el contenedor principal */
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Alinea el contenido verticalmente en el centro */
+  }
+  
+  /* Estilo para cada par de etiqueta e input */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: left;   
+  }
+  
+  /* Estilo para la etiqueta */
+  .input-group label {
+    width: auto; /* Establece un ancho automático para la etiqueta */
+    margin-bottom: 1px;
+    display: flex;
+    align-items: left;
+    font-family: 'Agenor Neue Regular';
+  }
+  
+  /* Estilo para el input */
+  .input-group input {
+    flex: 1;
+    width: 100%; 
+    border: none; 
+    border-bottom: 1px solid #000;
+    margin-left: 10px;
+    padding: 0; 
+    background: transparent; 
+    outline: none;
+  }
+  
+  input::placeholder {
+    font-family: 'Agenor Neue Regular'; 
+  }
+
+input:focus::placeholder {
+    color: transparent; 
+    opacity: 0; 
+  }
+  /* Quitar los bordes y dejar solo una línea de abajo para el selector */
+select {
+    border: none; /* Quitar todos los bordes */
+    border-bottom: 1px solid #000; /* Agregar una línea de abajo */
+    padding: 5px; /* Agregar un poco de espacio interior opcional */
+    outline: none; /* Eliminar el contorno de enfoque */
+  }
+  
+  input[type="submit"] {
+    border: none; /* Elimina el borde */
+    outline: none; /* Elimina el contorno cuando el botón está enfocado */
+    background: none; /* Establece el fondo a ninguno */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    background-color: #3DCD49;
+    color: #fff;
+    font-family: 'Agenor Neue Regular'; 
+    font-size: 16px;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+    width: 100%;
+    padding: 15px;
+  }
+  .guardar{
+    margin-top: 30px;
+    margin-bottom: 20px;   
+  }
+  input[type="submit"]:hover {
+    background-color: #3dcd49c4; /* Cambia el color de fondo al pasar el mouse (hover) */
+  }

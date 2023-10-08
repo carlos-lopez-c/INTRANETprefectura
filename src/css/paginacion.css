@@ -1,0 +1,19 @@
+.btn{
+    display: flex;
+    padding-bottom: 10px;
+    justify-content:space-evenly; 
+}
+.boton {
+    /* Estilos para los botones */
+    padding: 10px 50px;
+    background-color: #142f93dc;
+    border-radius: 0px 20px 0px 0px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bnat{
+    border-radius: 20px 0px 0px 0px;
+  }

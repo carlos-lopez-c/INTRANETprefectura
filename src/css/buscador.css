@@ -8,6 +8,7 @@
     color: #fff;
     padding-left: 35px;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
 }
 
 .container-2 input#search::-webkit-input-placeholder {
@@ -30,7 +31,7 @@
 
 .container-2 .icon {
     position: absolute;
-    top: 100px;
+    top: 90px;
     margin-left: 650px;
     margin-top: 165px;
     z-index: 1;

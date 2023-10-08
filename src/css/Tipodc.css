@@ -1,20 +1,29 @@
+/* Estilos iniciales para pantallas grandes */
+.contenedor-flex {
+  display: flex;
+  flex-direction: column; /* Apila elementos verticalmente en pantallas pequeñas */
+  align-items: center; /* Centra elementos horizontalmente en pantallas pequeñas */
+  text-align: center; /* Centra el texto horizontalmente */
+}
 .titledc {
   margin-top: 180px;
   background-color: #142f93dc;
   color: #fff;
 }
 
+/* Estilos para h1 */
 h1 {
   text-align: center;
   font-family: 'AVENIR NEXT HEAVY';
 }
 
+/* Estilos para la tabla */
 table {
   margin: 0 auto;
   border: none;
   color: #fff;
   font-size: 20px;
-  margin-bottom: 90px;
+  margin-bottom: 20px;
   border-collapse: collapse;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
 }
@@ -28,40 +37,118 @@ th, td {
   padding: 10px;
 }
 
+/* Estilos para el encabezado de la tabla */
 thead {
   background-color: #142f93dc;
   color: azure;
   font-family: 'Agenor Neue Regular';
 }
 
+/* Estilos para el cuerpo de la tabla */
 tbody {
   background-color: #D9D9D9;
   color: rgb(0, 0, 0);
-  max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
-  overflow-y: auto; /* Agrega el scroll vertical solo para el cuerpo de la tabla */
+  max-height: 400px;
+  overflow-y: auto;
 }
 
+/* Estilos para el botón V */
 .btnV {
   width: 50px;
   height: 50px;
-  margin-top: 20px;
   margin-left: 305px;
+  padding-top: 20px;
 }
 
+/* Estilos para la clase atras */
 .atras {  
-  padding-left:10px;
-  margin-top: 20px;
+  padding-left: 10px;
+  margin-top: 10px;
   margin-bottom: 20px;
   vertical-align: middle;
-  white-space: nowrap;
+  white-space: nowrap;  
 }
-
+.eliminar{
+  display: flex;
+  padding: 4px 30px;
+  font-size: 20px;
+  background-color: #ff0909dc;  
+  justify-content: space-evenly;
+  border-radius: 10px 10px 0px 0px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+}
+.actualizar{
+  display: flex;
+  text-decoration: none;
+  padding: 4px 4px;
+  font-size: 20px;
+  background-color: #142f93dc;
+  justify-content: space-evenly;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  margin-top: 8px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+/* Estilos para la imagen imgA */
 .imgA{
   width: 40px;
   height: 40px;
 }
+
+/* Estilos para la clase act */
 .act {
   background-color: rgb(193, 69, 69);
+}
+
+@media screen and (max-width: 768px) {
+  /* Ajusta otros estilos según sea necesario para pantallas medianas */
+  .titledc {
+    margin-top: 100px; /* Ajusta el margen superior según tus necesidades para pantallas medianas */
+  }
+
+  /* Ajusta la disposición de los elementos con Flexbox para pantallas medianas */
+  .contenedor-flex {
+    display: flex;
+    flex-direction: column; /* Apila elementos verticalmente en pantallas medianas */
+    align-items: center; /* Centra elementos horizontalmente en pantallas medianas */
+    text-align: center; /* Centra el texto horizontalmente */
+  }
+  table{
+    font-size: 10px;
+  }
+  /* Ajusta otros estilos para elementos individuales según sea necesario */
+  .btnV {
+    margin-left: 10px; /* O ajusta según tus necesidades */
+    margin-top: 10px; /* O ajusta según tus necesidades */
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ajusta otros estilos según sea necesario para pantallas medianas */
+  .titledc {
+    margin-top: 10px; /* Ajusta el margen superior según tus necesidades para pantallas medianas */
+  }
+
+  table{
+    font-size: 12px;
+  }
+  /* Ajusta otros estilos para elementos individuales según sea necesario */
+  .btnV {
+    margin-left: 10px; /* O ajusta según tus necesidades */
+    margin-top: 10px; /* O ajusta según tus necesidades */
+  }
 }
 
 

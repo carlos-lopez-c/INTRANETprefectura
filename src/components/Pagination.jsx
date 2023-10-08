@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import '../css/paginacion.css'
 export const Pagination = ({
     totalPaginas,
     numeroDePagina,
@@ -26,14 +26,14 @@ export const Pagination = ({
 
 
     return (
-        <div>
-            <button onClick={onPreviousPage} disabled={numeroDePagina === 1}>Retroceder</button>
+       <div className="btn">
+            <button className="boton bnat" onClick={onPreviousPage} disabled={numeroDePagina === 1}>ATRAS</button>
             <select onChange={onChangeMedidaPagina} name="limit" id="limit" defaultValue={medidaDePagina}>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
             </select>
-            <button onClick={onNextPage} disabled={ultimaPagina}>Avanzar</button>
+            <button className="boton" onClick={onNextPage} disabled={ultimaPagina}>SIGUIENTE</button>
         </div>
     )
 }

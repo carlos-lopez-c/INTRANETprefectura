@@ -56,25 +56,23 @@ export function Vehiculos() {
   }
   if (loading) return (<h1>Cargando...</h1>);
   return (
-    <div> {/* Aplica una clase de contenedor */}
+    <div className='.contenedor-flex'> {/* Aplica una clase de contenedor */}
 
       <div className='titledc'>
-        <h1 >LISTA DE VEHICULOS Y PLACAS</h1>
+        <h1>LISTA DE VEHICULOS Y PLACAS</h1>
       </div>
-
-
 
 
       <link href={'//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'} rel="stylesheet" />
 
-      <div className="atras"> {/* Cambié "class" a "className" */}
-        <div className="container-2"> {/* Cambié "class" a "className" */}
+      <div className="atras"> 
+        <div className="container-2"> 
           <form onSubmit={handleSearch}>
             <span className="icon"><i className="fa fa-search"></i></span>
             <input type="search" id="search" placeholder="Buscar..."
               value={searchVehiculo} onChange={handleSearchChange} />
           </form>
-          <img src={Icon} alt="TITULO DE LA SECCION" onClick={() => { navigate("/combustible") }} className='imgA' />
+          <img src={Icon} alt="atras" onClick={() => { navigate("/combustible") }} className='imgA' />
           <img src={Resgistrar} alt="ICONO REGISTRAR" onClick={() => { navigate("/vehiculos/formulario") }} className="btnV" />
         </div>
       </div>
@@ -101,8 +99,8 @@ export function Vehiculos() {
               <td>{vehiculo.conductor}</td>
               <td>{vehiculo.kilometraje}</td>
               <td>
-                <button onClick={() => handleDelete(vehiculo.placa)}>Eliminar</button>
-                <Link to={`/vehiculos/formulario/${vehiculo.placa}`} >Actualizar</Link>
+                <button onClick={() => handleDelete(vehiculo.placa)} className="eliminar">Eliminar</button>
+                <Link to={`/vehiculos/formulario/${vehiculo.placa}`} className='actualizar'>Actualizar</Link>
               </td>
             </tr>
           ))}
@@ -117,7 +115,6 @@ export function Vehiculos() {
         handlePaginaSiguiente={handlePaginaSiguiente}
         handlePaginaAnterior={handlePaginaAnterior}
         handleMedidaDePagina={handleMedidaDePagina}
-
       />
     </div>
   );
